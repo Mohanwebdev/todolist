@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Todolist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap" rel="stylesheet">
+ 
+    <link rel="stylesheet" href="css/styles.css">
+   
+
+</head>
+
+
+
+<body>
+    
+   <a href="/"> <button  class="home">
+       Home
+   </button>
+    </a>
+    <button id="bar">
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="svg-inline--fa fa-bars fa-w-14"
+            id="bar-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path fill="currentColor"
+                d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z">
+            </path>
+        </svg></button>
+    <div class="left-bar">
+       
+        <div class="left-heading left-box ">
+            <h3>Create a custom list</h3>
+        </div>
+        <div class="left-list left-box">
+           <% customItemList.forEach(function(foundList){ %>
+
+            <form action="/customListDelete" method="post">
+            <div class="left-list-item">
+            <a id="link" href="/<%= foundList.item %>"  > <div id="btn" class="button" > <%= foundList.item %></div></a>
+            <input type="hidden" name="customItem" value="<%=foundList.item%>">
+
+            <div class="svg" >
+            <button type="submit"><svg aria-hidden="true" focusable="false" id="svg"  data-prefix="fas" data-icon="trash-alt" o
+                class="svg-inline--fa fa-trash-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path fill="currentColor"
+                    d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z">
+                </path>
+            </svg>
+            </button>
+            </div>
+
+            </div>
+            </form>
+            <%})%>
+            <form action="/customlist" method="POST">
+                <input type="text" placeholder="custom list name" name="customItemName" id="" autocomplete="off">
+                <button class="submit-btn" type="submit">+</button>
+            </form>
+        </div>
+        
+    </div>
+    <div class="content">
+    <div class="heading box">
+    <h1><%= today%></h1>
+    </div>
+
+    <div class="list box">
+   
+    <%newList.forEach(function(newItem){%>
+    <form action="/delete" method="post">
+        <div class="item">
+        <input type="checkbox" name="checkbox" onChange="this.form.submit()" value="<%=newItem._id%>" id="">    
+        <p><%= newItem.item %></p>
+        </div>
+        <input type="hidden" name="listName" value='<%=today%>'>
+    </form>
+    <%})%>
+ 
+    
+
+    <form action="/" method="post">
+    <input type="text" name="newItem" placeholder="New Item" autocomplete="off" >
+    <button name="list" value="<%=today%>" type="submit">+</button>
+
+    </form>
+   
+    </div>
+    
+  
+<script src="javascript/function.js"></script>
+</body>
+</html>
