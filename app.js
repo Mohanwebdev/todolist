@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 
 var custom='';
 // database connection
-mongoose.connect('mongodb://localhost:27017/todolist');
+mongoose.connect('mongodb+srv://admin-mohan:Mohanraj%4027@cluster0.l139x.mongodb.net/todolist?retryWrites=true&w=majority');
 
 const itemSchema= new mongoose.Schema({
    item : String
