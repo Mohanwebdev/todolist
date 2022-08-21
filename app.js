@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const _ = require('lodash');
 
+require('dotenv').config();
+
 
 const app = express();
 
@@ -14,8 +16,15 @@ app.set('view engine', 'ejs');
 
 
 var custom='';
+
+db_name = process.env.DB_NAME; 
+db_pass = process.env.DB_PASS; 
+
+
 // database connection
-mongoose.connect('mongodb+srv://admin-mohan:Mohanraj%4027@cluster0.l139x.mongodb.net/todolist?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://'+db_name+':'+db_pass+'@cluster0.l139x.mongodb.net/todolist?retryWrites=true&w=majority');
+
+// mongoose.connect('mongodb+srv://admin-mohan:Mohanraj%4027@cluster0.l139x.mongodb.net/todolist?retryWrites=true&w=majority');
 
 const itemSchema= new mongoose.Schema({
    item : String
