@@ -22,9 +22,9 @@ db_pass = process.env.DB_PASS;
 
 
 // database connection
-mongoose.connect('mongodb+srv://'+db_name+':'+db_pass+'@cluster0.l139x.mongodb.net/todolist?retryWrites=true&w=majority');
+mongoose.connect("mongodb+srv://"+process.env.DB_USERNAME+":"+process.env.DB_PASSWORD+"@cluster0.bn8mc.mongodb.net/SecretsApp?retryWrites=true&w=majority", { useNewUrlParser: true });
 
-// mongoose.connect('mongodb+srv://admin-mohan:Mohanraj%4027@cluster0.l139x.mongodb.net/todolist?retryWrites=true&w=majority');
+
 
 const itemSchema= new mongoose.Schema({
    item : String
